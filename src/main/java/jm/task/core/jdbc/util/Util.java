@@ -12,6 +12,11 @@ public class Util {
     static private Connection conn;
 
     public static Connection getConnection() throws SQLException {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException cnfe) {
+            cnfe.printStackTrace();
+        }
         return conn = DriverManager.getConnection(url, user, password);
     }
 }
